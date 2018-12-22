@@ -171,7 +171,7 @@ class storekalkulator(QWidget):
             plt.xticks(ind, countries)
             plt.legend(("freier Storage", "belegter Storage", "neue VM"), loc="upper left")
 
-            plt.grid(True)
+            plt.grid(axis='y')
 
             c_rects = plt.bar( ind, kapazit_bar, align='center', alpha=0.0)
 
@@ -224,7 +224,7 @@ if __name__ == '__main__':
     main()
     # Aufgaben: falscheingabe abfangen. belegter platz darf nicht höher als Kapazität sein. dann msg. falscheingabe
     # % nach falscher wert
-    # Ausgabefelder rechtsbümdig formatieren?
+    # Ausgabefelder rechtsbündig formatieren?
     # icon fenster
     # label.setAlignment(QtCore.Qt.AlignRight | QtCore.Qt.AlignVCenter)
     # + und - zeichen verhindern
