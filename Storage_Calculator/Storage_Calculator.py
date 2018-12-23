@@ -165,22 +165,29 @@ class storekalkulator(QWidget):
             # plt.figure(figsize=(4, 4)) FEHLER FEHLER
             plt.ylabel("GB")
             plt.xlabel("Zustände")
-            plt.bar(ind, kapazit_bar, width=0.5, color='#000066', edgecolor='black', hatch="/")
+            plt.bar(ind, kapazit_bar, width=0.5, color='#000066', edgecolor='black', hatch=".")
             plt.bar(ind, belegter_speicher_bar, width=0.5, color='b', edgecolor='black', hatch="/")
-            plt.bar(ind, vm_bar, width=0.5, color='#616ccf', edgecolor='black', label='test', hatch="/")
+            plt.bar(ind, vm_bar, width=0.5, color='#616ccf', edgecolor='black', label='test', hatch="//")
             plt.xticks(ind, countries)
             plt.legend(("freier Storage", "belegter Storage", "neue VM"), loc="upper left")
 
-            plt.grid(axis='y')
+            #plt.grid(axis='y')
 
+            #balken = [kapazit_bar,belegter_speicher_bar,vm_bar]
             c_rects = plt.bar( ind, kapazit_bar, align='center', alpha=0.0)
+            b_rects = plt.bar( ind, belegter_speicher_bar, align='center', alpha=0.0)
+            a_rects = plt.bar( ind, vm_bar, align='center', alpha=0.0)
+
+            props = dict(boxstyle='round', facecolor='wheat', alpha=0.5)
 
             def autolabel(rects):
                 for rect in rects:
                     height = rect.get_height()
-                    plt.text(rect.get_x() + rect.get_width()/2., height + 1, '%.1f' % float(height), ha='center', va='bottom')
+                    plt.text(rect.get_x() + rect.get_width()/2., height + 20, '%.0f' % float(height), ha='center', va='bottom', color='b', size=14, bbox=props)
             
             autolabel(c_rects)
+            autolabel(b_rects)
+            autolabel(a_rects)
 
             self.canvas.draw()
             testausgabe = int(self.eingabe_kapazitaet_v.text()) + int(self.eingabe_neue_vm_v.text())
